@@ -1,9 +1,28 @@
-preset_pattern = {  
-    "1": "<ref><classifier><colon><from><arrow><to>",
-    "2": "<type><ref><colon><from><arrow><to>",
-    "3": "<type><ref><classifier><colon><from><arrow><to>",
-    "4": "<network><ref><colon><from><arrow><to>",
-} # 这个由主页的方案预设1-7决定，照抄并加以符号化
+preset_pattern = {
+    "1": [{
+        "pattern": "<ref><classifier><colon><from><arrow><to>",
+        "suitable_type": "*"
+    }],
+    "2": [{
+        "pattern": "<type><ref><colon><from><arrow><to>",
+        "suitable_type": "*"
+    }],
+    "3": [{
+        "pattern": "<type><ref><classifier><colon><from><arrow><to>",
+        "suitable_type": "*"
+    }],
+    "4": [{
+        "pattern": "<network><ref><colon><from><arrow><to>",
+        "suitable_type": "*"
+    }],
+    "5":[{
+        "pattern":"<network><ref><colon><from><arrow><to>",
+        "suitable_type":"subway"
+    },{
+        "pattern":"<type><ref><colon><from><arrow><to>",
+        "suitable_type":"!subway"
+    }]
+}  # 这个由主页的方案预设1-7决定，照抄并加以符号化
 
 topic_prefer = {
     "topic_3": "B",
@@ -32,9 +51,9 @@ def topic_5(schema: str, pattern: str):  # 作为修饰器，用于替换议题�
         return pattern
 
 
-def is_chinese_ref(ref: str): # 判断是否包含中文，改为判断是否为纯ASCII的英文和数字
+def is_chinese_ref(ref: str):  # 判断是否包含中文，改为判断是否为纯ASCII的英文和数字
     try:
-        if ref.decode('ascii').isalnum():
+        if ref.decode("ascii").isalnum():
             return True
     except Exception as e:
         return False
