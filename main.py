@@ -1,39 +1,51 @@
-preset_pattern={
-    "1":"<ref><classifier><colon><from><arrow><to>"
-}
+preset_pattern = {"1": "<ref><classifier><colon><from><arrow><to>"} # 这个由主页的方案预设1-7决定，照抄并加以符号化
 
-topic_prefer={
-    "topic_3":"B",
-    "topic_4":"甲",
-    "topic_5":"子"
-}
+topic_prefer = {"topic_3": "B", "topic_4": "甲", "topic_5": "子"} # 这个由用户选择议题三四五的标点符号习惯
 
-def topic_3(schema:str,pattern:str):
-    if schema=="A":
-        return pattern.replace("<arrow>","→")
-    elif schema=="B":
-        return pattern.replace("<arrow>","->")
-    elif schema=="C":
-        return pattern.replace("<arrow>","=>")
+def topic_3(schema: str, pattern: str): # 作为修饰器，用于替换议题三的标点符号
+    if schema == "A":
+        return pattern.replace("<arrow>", "→")
+    elif schema == "B":
+        return pattern.replace("<arrow>", "->")
+    elif schema == "C":
+        return pattern.replace("<arrow>", "=>")
     else:
         return pattern
 
-def is_chinese_ref(ref:str):
+def topic_5(schema: str, pattern: str): # 作为修饰器，用于替换议题五的标点符号
+    if schema == "子":
+        return pattern.replace("<colon>", ": ")
+    elif schema == "丑":
+        return pattern.replace("<colon>", "：")
+    else:
+        return pattern
+
+
+def is_chinese_ref(ref: str):
     pass
 
-def classifier(type:str,ref:str):
-    if type=="bus":
+
+def classifier(type: str, ref: str):
+    if type == "bus":
         return "路"
-    elif type=="subway":
-        if is_chinese_ref(ref)==True:
+    elif type == "subway":
+        if is_chinese_ref(ref) == True:
             return "线"
         else:
             return "号线"
     else:
         return ""
 
-def renamer(from:str, to:str, ref:str, type:str, network:str):
+
+def renamer(
+    from_value: str,
+    to_value: str,
+    ref_value: str,
+    type_value: str,
+    network_value: str,
+):
+    pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     renamer()
