@@ -21,7 +21,18 @@ preset_pattern = {
     },{
         "pattern":"<type><ref><colon><from><arrow><to>",
         "suitable_type":"!subway"
-    }]
+    }],
+    "6":"没看懂，咕了",
+    "7":[
+        {
+            "pattern":"<network><ref><classifier><colon><from><arrow><to>",
+            "suitable_type":"(subway|light_rail|monorail|tram)"
+        },
+        {
+            "pattern":"<ref><classifier><colon><from><arrow><to>",
+            "suitable_type":"!(subway|light_rail|monorail|tram)"
+        }
+    ]
 }  # 这个由主页的方案预设1-7决定，照抄并加以符号化
 
 topic_prefer = {
