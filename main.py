@@ -2,13 +2,21 @@ preset_pattern={
     "1":"<ref><classifier><colon><from><arrow><to>"
 }
 
-def proposal_1(schema:int):
-    if schema==1:
-        return pass
+topic_prefer={
+    "topic_3":"B",
+    "topic_4":"甲",
+    "topic_5":"子"
+}
 
-def proposal_2(schema:int):
-    if schema==1:
-        return pass
+def topic_3(schema:str,pattern:str):
+    if schema=="A":
+        return pattern.replace("<arrow>","→")
+    elif schema=="B":
+        return pattern.replace("<arrow>","->")
+    elif schema=="C":
+        return pattern.replace("<arrow>","=>")
+    else:
+        return pattern
 
 def is_chinese_ref(ref:str):
     pass
